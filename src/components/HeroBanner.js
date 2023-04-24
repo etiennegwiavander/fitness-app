@@ -24,7 +24,8 @@ const HeroBanner = () => {
             fontSize='200px'
             sx={{
                 opacity: 0.1,
-                display: { lg: 'block', xs: 'none'}
+                display: { lg: 'block', xs: 'none'},
+                userSelect: 'none'
 
             }}
         >
