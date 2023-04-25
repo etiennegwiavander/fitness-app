@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Typography, Button, Box, Stack, TextField } from '@mui/material'
 import { exerciseOptions, fetchedData } from '../utils/ApiFetch'
+import HorizontalScrollBar from './HorizontalScrollBar'
 
 
 const SearchExercise = () => {
 
     const [search, setSearch] = useState( ' ' )
     const [exercises, setExercises] = useState([])
+    const [bodyParts, setBodyParts] = useState([])
 
     const handleSearch = async (e) =>{
         // e.preventDefault() 
@@ -23,6 +25,18 @@ const SearchExercise = () => {
             setExercises( searchedExercises)
         }
     }
+
+    useEffect(() => {
+      const exerciseByBodyParts = async () =>{
+        const bodyPartsData = await fetchedData( 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions)
+        setBodyParts(['all', ...bodyPartsData])
+        console.log(bodyParts)
+      }
+      exerciseByBodyParts()
+
+
+    }, [ ])
+    
 
   return (
     <Stack style={{
@@ -79,6 +93,9 @@ const SearchExercise = () => {
              
                 Search 
             </Button>
+        </Box>
+        <Box>
+            <HorizontalScrollBar data={bodyParts}/>
         </Box>
         
     </Stack>
