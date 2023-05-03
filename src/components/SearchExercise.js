@@ -4,10 +4,9 @@ import { exerciseOptions, fetchedData } from '../utils/ApiFetch'
 import HorizontalScrollBar from './HorizontalScrollBar'
 
 
-const SearchExercise = () => {
+const SearchExercise = ({setBodyPart, bodyPart, setExercises}) => {
 
     const [search, setSearch] = useState( ' ' )
-    const [exercises, setExercises] = useState([])
     const [bodyParts, setBodyParts] = useState([])
 
     const handleSearch = async (e) =>{
@@ -57,7 +56,7 @@ const SearchExercise = () => {
             Awesome Exercises You <br/> Should Know
         </Typography>
         <Box>
-            <TextField className='search-input'
+            <TextField 
                 sx={{
                     input:{
                         fontWeight: 'bold', 
@@ -95,7 +94,7 @@ const SearchExercise = () => {
             </Button>
         </Box>
         <Box sx={{ position: 'relative', width: '100%', p: '29px'}}>
-            <HorizontalScrollBar data={bodyParts}/>
+            <HorizontalScrollBar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
         </Box>
         
     </Stack>
