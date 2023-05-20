@@ -64,7 +64,7 @@ body {
 }
 
 .exercise-card {
-  width: 400px;
+  width: 350px;
   height: 445px;
   background: #fff;
   border-top: 4px solid #FF2625;
@@ -79,7 +79,7 @@ body {
 }
 
 .exercise-card img {
-  height: 326px;
+  height: 260px;
 }
 
 .bodyPart-card {
@@ -89,7 +89,7 @@ body {
 
 .exercise-card:hover,
 .bodyPart-card:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1);
 }
 
 .search-btn:hover {
