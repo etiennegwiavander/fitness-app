@@ -7,7 +7,10 @@ import ExerciseCard from './ExerciseCard'
 
 
 const Exercise = ({ exercises, bodyPart, setExercises }) => {
+  // "exercises" is send down as a prop from the "Home" component.
+  // the "bodyPart" are coming from the "SearchExercise" component.
   const [currentPage, setcurrentPage] = useState(1)
+
   const exercisesPerPage = 9
   const indexOfLastExercise = currentPage * exercisesPerPage // this returns 9 which is 1 * 9 ( because the innitial state of the current page is 1)
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage // This returns 0 since 9-9 =0 (because the indexOfLastExercise is 9.)
@@ -15,9 +18,22 @@ const Exercise = ({ exercises, bodyPart, setExercises }) => {
 
 
   const paginate = (e, value) => {
-    setcurrentPage(value)
-    window.scrollTo({ top: 1600, behavior: 'smooth'})
+    setcurrentPage(value) // the "setCurrentPage" is set equal to "value" because by default the paginat function comes with two parameters "e and value" for the pagination button to effectively work.
+    window.scrollTo({ top: 1600, behavior: 'smooth'}) // this method makes it posible for the page to automatically scroll to 1600px when a pagination number is clicked.
   }
+
+  useEffect(() =>{
+    const fetchExercisesData = async () => {
+      let exercisesData = []
+      if(bodyPart === 'all'){
+        exercisesData = await fetchedData( 'https://exercisedb.p.rapidapi.com/exercises', exerciseOptions )
+      }else{
+        exercisesData = await fetchedData( `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions )
+      }
+      setExercises(exercisesData) // this changes the setExercises from the "Home" component to the "exercisesData".
+    }
+    fetchExercisesData()
+  }, [bodyPart])
 
    return (
 
@@ -35,7 +51,9 @@ const Exercise = ({ exercises, bodyPart, setExercises }) => {
       
       <Stack direction="row" sx={{ gap: {lg: '100px', xs: '40px'}}} flexWrap="wrap" justifyContent='center'>
         {currentExercises.map((exercise, index) =>(
+
           <ExerciseCard key={index} exercise={exercise}/>
+
         ))}
       </Stack>
       <Stack alignItems="center" mt="100px">
@@ -44,8 +62,8 @@ const Exercise = ({ exercises, bodyPart, setExercises }) => {
             color='standard'
             shape='rounded'
             count={Math.ceil( exercises.length/exercisesPerPage )}
-            page={currentPage}
-            onChange={paginate}
+            page={currentPage} 
+            onChange={paginate} // the "paginate" is a function that is being called any time a pagination function is clicked
             size='large'
           />
         )}

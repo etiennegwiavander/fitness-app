@@ -6,7 +6,7 @@ import HorizontalScrollBar from './HorizontalScrollBar'
 
 const SearchExercise = ({setBodyPart, bodyPart, setExercises}) => {
 
-    const [search, setSearch] = useState( ' ' )
+    const [search, setSearch] = useState( '  ' )
     const [bodyParts, setBodyParts] = useState([])
 
     const handleSearch = async (e) =>{
