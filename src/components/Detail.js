@@ -7,7 +7,6 @@ import EquipmentImage from '../assets/icons/equipment.png'
 
 const Detail = ({ exerciseDetail }) => {
   // We are getting the exerciseDetail as a prop from the ExerciseDetails component
-  console.log(exerciseDetail)
   const { bodyPart, gifUrl, name, target, equipment} = exerciseDetail
 
   const extraDetail = [
@@ -40,8 +39,8 @@ const Detail = ({ exerciseDetail }) => {
 
           <Stack direction="row" gap="24px" alignItems = "center" key={item.name}>
 
-            <Button sx={{ backgroundColor: "#fff2db", hight: "100px", width:"100px", borderRadius:"50%" }}>
-              <img src={item.icon} alt={item.name} /> 
+            <Button sx={{ backgroundColor: "#fff2db", height: "100px", width:"100px", borderRadius:"50%" }}>
+              <img src={item.icon} alt={bodyPart} style={{ width: '50px', height: '50px'}}/> 
               
             </Button>
             <Typography textTransform='capitalize' color="black" variant='h6' ml="15px"> {item.name} </Typography>
