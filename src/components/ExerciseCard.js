@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
-import{ Button, Stack, Typography} from '@mui/material'
+import{ Button, Stack, Typography, Box } from '@mui/material'
+import Skeleton from '@mui/material/Skeleton'
 
 const  ExerciseCard = ({ exercise }) => {
+    // console.log(exercise)
+    const [isLoding, setIsLoding] = useState(false)
 
   return (
-    <Link className='exercise-card' to={`/exercise/${exercise.id}`}  >
+<Box>
+    {<Link className='exercise-card' to={`/exercise/${exercise.id}`}  >
 
-        <img src={ exercise.gifUrl} alt={ exercise.name} loading='lazy'/>
+        {isLoding ? (
+            <Skeleton variant='rectangle' sx={{ width: '100px', height:'200px'}}  animation='wave' />
+        ) : (<img src={ exercise.gifUrl} alt={ exercise.name} loading='lazy'/>)
+        }
 
         <Stack direction="row" sx={{ justifyContent:'center' }}>  
         
@@ -46,7 +53,9 @@ const  ExerciseCard = ({ exercise }) => {
             {exercise.name}
         </Typography>
 
-    </Link>
+    </Link>}
+    
+    </Box>
   )
 }
 

@@ -2,25 +2,27 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { Link } from 'react-router-dom'
 import Logo from '../assets/images/Logo.png'
+import brawn from '../assets/images/brawn.png'
 
 const Navbar = () => {
   return (
-    <Stack  direction='row' sx={{ justifyContent: 'space-around', gap: {sm:'122px', xs: '40px'},
-      mt: {sm: '32px', xs: '20px'}, justifyContent: 'none'}} px= '20px'
+    <Stack  direction='row' sx={{ justifyContent: 'space-around', textAlign: 'center', gap: {sm:'122px', xs: '40px'},
+      mt: {sm: '20px', xs: '20px'}, justifyContent: 'none'}} px= '20px'
     >
       <Link to='/'> 
-        <img src={Logo} alt="Logo" style={{ width: '48px', height: '48px', margin: '0 20px'}} />
+        <img src={brawn} alt="Logo" style={{ width: '65px', height: '65px', margin: '0 20px'}} />
       </Link>
       <Stack 
         direction= 'row'
         gap='40px'
         fontSize='24px'
-        alignItems='flex-end'
+        alignItems='center'
+        
       >
         <Link to='/' 
           style={{
             textDecoration: 'none',
-            borderBottom: '3px solid #FF2625',
+            borderBottom: '3px solid #04AA6D',
             color: '#3A1212' 
 
           }}

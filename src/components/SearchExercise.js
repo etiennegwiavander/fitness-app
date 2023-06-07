@@ -81,9 +81,9 @@ const SearchExercise = ({setBodyPart, bodyPart, setExercises}) => {
                 onChange={(e)=>setSearch(e.target.value.toLowerCase())}
                 
             />
-            <Button className='search-btn'   justifyContent='center' onClick={handleSearch}
+            <Button className='search-btn' color='success'  justifyContent='center' onClick={handleSearch}
             sx={{
-                 background:' #FF2625',
+                 background:' #04AA6D',
                  color:' white',
                  textTransform: 'none',
                  width: { lg: '175px', xs: '80px'},

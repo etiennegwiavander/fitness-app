@@ -3,7 +3,7 @@ import gym from '../assets/icons/gym.png'
 import { Stack, Typography } from '@mui/material'
 
 const BodyParts = ({item, bodyPart, setBodyPart}) => {
-  
+  // console.log(item)
   return (
     <Stack 
       type="button"
@@ -14,7 +14,7 @@ const BodyParts = ({item, bodyPart, setBodyPart}) => {
       // the sx property below means that for the selected item, it will fufill the condtions of the boderTop while the unselected will take the styles after that.
       // 
       sx={{
-          borderTop:bodyPart === item ? '4px solid #ff2625': " ",
+          borderTop:bodyPart === item ? '4px solid #04AA6D': " ",
           backgroundColor: 'white',
           borderBottomLeftRadius: '20px',
           width: '270px',
